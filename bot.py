@@ -49,7 +49,7 @@ GROUP_LINK = os.getenv("GROUP_LINK")
 
 INSTAGRAM_PATTERN = r'(https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/[a-zA-Z0-9_\-]+\/?)|(https?:\/\/(?:www\.)?instagr\.am\/(?:p|reel|tv)\/[a-zA-Z0-9_\-]+\/?)'
 
-logging.basicConfig(format='%(message)s', level=logging.INFO)
+# logging.basicConfig(format='%(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 COOKIES_FILE_PATH = "cookies.json"
