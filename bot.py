@@ -2,6 +2,7 @@ import logging, re, os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from scrapper import check_if_liked
 from dotenv import load_dotenv
+from telegram.error import Conflict
 
 from telegram.ext import (
     ApplicationBuilder,
@@ -363,8 +364,12 @@ if __name__ == '__main__':
     # Add the unknown handler last to catch any unmatched text messages
     app.add_handler(MessageHandler(filters.TEXT, unknown))
     
-    print("Bot started...")
+
     app.run_polling(allowed_updates=Update.ALL_TYPES)
+    try:
+        app.run_polling(allowed_updates=Update.ALL_TYPES)
+    except Conflict as e:
+        print("Bot polling conflict: another instance may be running. Exiting.")
     
 
 
